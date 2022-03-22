@@ -27,7 +27,19 @@ Une cellule possède huit voisins, qui sont les cellules adjacentes horizontalem
 - Une cellule **morte** possédant exactement trois cellules voisines vivantes devient vivante (elle naît) ;
 - Une cellule **vivante** possédant deux ou trois cellules voisines vivantes le reste, sinon elle meurt.
 
-Ainsi, la configuration [image](https://upload.wikimedia.org/wikipedia/commons/8/8a/Gol-blinker1.png) donne au tour suivant la configuration [image](https://upload.wikimedia.org/wikipedia/commons/a/a0/Gol-blinker2.png) qui redonne ensuite la première.
+Ainsi, la configuration [image](image/exemple%20Readme/Gol-blinker1.png) donne au tour suivant la configuration [image](image/exemple%20Readme/Gol-blinker2.png) qui redonne ensuite la première.
+
+On peut également formuler cette évolution ainsi :
+
+[image](image/exemple%20Readme/Gol-born.png) - si une cellule a exactement trois voisines vivantes, elle est vivante à l’étape suivante.
+C’est le cas de la cellule verte dans la configuration de gauche ;
+
+[image](/image/exemple%20Readme/Gol-dead.png) - si une cellule a exactement deux voisines vivantes, elle reste dans son état actuel à l’étape suivante.
+Dans le cas de la configuration de gauche, la cellule située entre les deux cellules vivantes reste morte à l’étape suivante ;
+
+[image](image/exemple%20Readme/Gol-nochange.png) - si une cellule a strictement moins de deux ou strictement plus de trois voisines vivantes, elle est morte à l’étape suivante.
+C’est le cas de la cellule rouge dans la configuration de gauche.
+
 
 ### Pré-requis
 
