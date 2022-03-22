@@ -69,10 +69,10 @@ Inspiré de => https://www.youtube.com/watch?v=S-W0NX97DB0
 
 ## Participant au projet 
 
-Gille P. : Helper
-Acdhir : Helper
+- Gille P. : Helper
+- Acdhir : Helper
 
 ## Auteurs
 
-Julien Fernandez : Développeur
-Antoine Terrade : Développeur
+- Julien Fernandez : Développeur
+- Antoine Terrade : Développeur
