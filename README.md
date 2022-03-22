@@ -69,7 +69,7 @@ Inspiré de => https://www.youtube.com/watch?v=S-W0NX97DB0
 
 ## Participant au projet 
 
-- Gille P. : Helper
+- Gilles P. : Helper
 - Acdhir : Helper
 
 ## Auteurs
