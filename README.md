@@ -1,13 +1,33 @@
-# Titre du projet
-_(juste en dessous des badges sympatiques à placer)_
+# Jeu de la vie Version JAVASCRIPT
+_(inspiration de la vidéo youtube de science étonnante)_
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/julien-fernandez-20b5b027/)
 
-Une petite description du projet
+Après visionnage de la vidéo sur l'origine et l'explication du fonctionnement du "Jeu de la vie" par *science étonnante*,
+J'ai lancé le défie à un collègue de promo & moi même de recrée cette expérience sur une page HTML CSS et de géré l'activité en **JAVASCRIPT**.
 
-## Pour commencer
+## Le principe
 
-Entrez ici les instructions pour bien débuter avec votre projet...
+Le Jeu de la vie est un « jeu à zéro joueur », puisqu'il ne nécessite aucune intervention du joueur lors de son déroulement. 
+Il s’agit d’un automate cellulaire, un modèle où chaque état conduit mécaniquement à l’état suivant à partir de règles pré-établies.
+
+### Les règles
+
+Le jeu se déroule sur une grille à deux dimensions, théoriquement infinie (*mais ici limité pour le moment*), dont les cases — appelées « cellules »,
+ par analogie avec les cellules vivantes — peuvent prendre deux états distincts : **vivante** ou  **morte**.
+
+ - Une cellules ***vivante*** sera **noir**.
+ - Une cellules *morte* sera **blanche**.
+
+Une cellule possède huit voisins, qui sont les cellules adjacentes horizontalement, verticalement et diagonalement.
+
+À chaque itération, l'état d’une cellule est entièrement déterminé par l’état de ses huit cellules voisines, selon les règles suivantes :
+
+- Une chute de « bombes » non périodique.
+- Une cellule **morte** possédant exactement trois cellules voisines vivantes devient vivante (elle naît) ;
+- Une cellule **vivante** possédant deux ou trois cellules voisines vivantes le reste, sinon elle meurt.
+
+Ainsi, la configuration [image](https://upload.wikimedia.org/wikipedia/commons/8/8a/Gol-blinker1.png) donne au tour suivant la configuration [image](https://upload.wikimedia.org/wikipedia/commons/a/a0/Gol-blinker2.png) qui redonne ensuite la première.
 
 ### Pré-requis
 
