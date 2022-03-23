@@ -48,6 +48,7 @@ td {
     border: 1px solid black;
     width : 1rem;
     height: 1rem;
+    margin: 0px;
 }
 
 #formTbl {

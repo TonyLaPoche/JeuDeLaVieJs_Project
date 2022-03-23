@@ -91,7 +91,7 @@ function replayChrono(e) {
 btnReplay.addEventListener("click", replayChrono);
 
 //############################################################//
-                    // Reset le chrono // 
+                // Reset le chrono & le Tableau //
 //############################################################//
 function resetChrono(e) {
     e.preventDefault();
@@ -101,19 +101,21 @@ function resetChrono(e) {
     monculReplay = 0;
     timer = 0;
     timerElement.innerHTML = timer;
+    tbl.innerHTML="";
+
 }
 btnReset.addEventListener("click", resetChrono);
 //############################################################//
                     // Generate Table // 
 //############################################################//
 
+const tbl = document.getElementById("createTbl");
 const btnCreateTbl = document.getElementById("generateTbl");
 let inputLigne = document.getElementById("inputNbrRow");
 let inputColonne = document.getElementById("inputNbrCel");
 
 function makeTbl(e) {
     e.preventDefault();
-    let tbl = document.getElementById("createTbl");
     for (let i = 0; i < inputLigne.value; i++){
         let maLigne = document.createElement("tr");
         maLigne.id = `ligne ${i}`;
@@ -123,7 +125,8 @@ function makeTbl(e) {
 
         for (let j = 0; j < inputColonne.value; j++){
             let cellule = document.createElement("td");
-            ligne.appendChild(cellule)
+            cellule.className = `${i} Cellule ${j}`;
+            ligne.appendChild(cellule);
         }
     }
 }
