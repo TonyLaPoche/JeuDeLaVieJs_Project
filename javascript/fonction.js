@@ -48,6 +48,9 @@ function stopChrono(e) {
 btnPause.addEventListener("click", stopChrono);
 
 const truc = "machin";
+const nouvelleFeature =() => {
+    console.log('nouvelle feature')
+}
 //############################################################//
                     // Play x2 le chrono // 
 //############################################################//
