@@ -47,7 +47,6 @@ function stopChrono(e) {
 }
 btnPause.addEventListener("click", stopChrono);
 
-const truc = "machin";
 const nouvelleFeature =() => {
     console.log('nouvelle feature')
 }
@@ -151,5 +150,3 @@ function arYualive(){
 
 
 celluleColor.addEventListener("click", arYualive);
-
-console.log("une modif");
