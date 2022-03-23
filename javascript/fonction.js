@@ -150,3 +150,5 @@ function arYualive(){
 
 
 celluleColor.addEventListener("click", arYualive);
+
+console.log('machin');
