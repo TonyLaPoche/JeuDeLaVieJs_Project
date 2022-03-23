@@ -108,18 +108,20 @@ btnReset.addEventListener("click", resetChrono);
 //############################################################//
 
 const btnCreateTbl = document.getElementById("generateTbl");
+let inputLigne = document.getElementById("inputNbrRow");
+let inputColonne = document.getElementById("inputNbrCel");
 
 function makeTbl(e) {
     e.preventDefault();
     let tbl = document.getElementById("createTbl");
-    for (let i = 0; i < 11; i++){
+    for (let i = 0; i < inputLigne.value; i++){
         let maLigne = document.createElement("tr");
-        maLigne.id = `ligne${i}`;
+        maLigne.id = `ligne ${i}`;
 
         tbl.appendChild(maLigne);
-        let ligne = document.getElementById(`ligne${i}`);
+        let ligne = document.getElementById(`ligne ${i}`);
 
-        for (let j = 0; i < 11; j++){
+        for (let j = 0; j < inputColonne.value; j++){
             let cellule = document.createElement("td");
             ligne.appendChild(cellule)
         }
