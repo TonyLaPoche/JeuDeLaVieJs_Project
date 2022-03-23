@@ -132,3 +132,18 @@ function makeTbl(e) {
 }
 
 btnCreateTbl.addEventListener("click", makeTbl);
+//############################################################//
+                    // Color Table // 
+//############################################################//
+
+let celluleColor = document.getElementsByClassName("Cellule");
+
+function arYualive(){
+    if (celluleColor.style != 'background-color:black;') {
+        console.log("c'est pas blanc ça !!!")
+    }
+}
+
+
+celluleColor.addEventListener("click", arYualive);
+

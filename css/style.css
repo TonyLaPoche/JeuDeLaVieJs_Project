@@ -57,5 +57,7 @@ td {
 }
 
 #createTbl {
-    margin: 1rem auto;
+    margin: .5rem auto;
+    border: 5px solid black;
 }
+
