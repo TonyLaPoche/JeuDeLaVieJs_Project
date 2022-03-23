@@ -14,7 +14,7 @@ const btnPlay = document.getElementById("btnPlay"); // Activer le Timer //* Ok
 const btnPause = document.getElementById("btnPause"); // Pause du Timer //* OK
 const btnSpeed = document.getElementById("btnSpeed"); // Accélération du Timer //* Ok
 const btnReplay = document.getElementById("btnReplay"); // Replay du Timer //* OK
-const btnReset = document.getElementById("reset"); // restart la session //? Pas encore test
+const btnReset = document.getElementById("reset"); // restart la session //* Ok
 
 // ###########################################################//
                     // Play le chrono // 
@@ -103,3 +103,27 @@ function resetChrono(e) {
     timerElement.innerHTML = timer;
 }
 btnReset.addEventListener("click", resetChrono);
+//############################################################//
+                    // Generate Table // 
+//############################################################//
+
+const btnCreateTbl = document.getElementById("generateTbl");
+
+function makeTbl(e) {
+    e.preventDefault();
+    let tbl = document.getElementById("createTbl");
+    for (let i = 0; i < 11; i++){
+        let maLigne = document.createElement("tr");
+        maLigne.id = `ligne${i}`;
+
+        tbl.appendChild(maLigne);
+        let ligne = document.getElementById(`ligne${i}`);
+
+        for (let j = 0; i < 11; j++){
+            let cellule = document.createElement("td");
+            ligne.appendChild(cellule)
+        }
+    }
+}
+
+btnCreateTbl.addEventListener("click", makeTbl);

@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+.chronoAffichage, #GenerateTbl {
+    display:block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#cycle {
+    padding:.2rem;
+    border-radius: .5rem;
+    background-color: red;
+    font-weight: bold;
+}
+
+#btnList {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+h1, h2, p {
+    margin: 1rem 0 1rem 0;
+    padding: 0;
+    text-align: center;
+}
+
+p {
+    font-size: 2rem;
+    font-style: italic;
+}
+
+button {
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
+}
+#GenerateTbl {
+    font-size: 2rem;
+}
+input {
+    font-size: 1.5rem;
+    height: 2.5rem;
+    width: 5rem;
+}

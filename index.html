@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Jeu de la vie</title>
 </head>
 <body>
-    <div class="chrono">
+    <div class="chronoAffichage">
+        <h1>Jeu de la vie.</h1>
         <p>
-            <span id="cycle" ></span> cycles
+            <span id="cycle" >0</span> cycles joué
         </p>
     </div>
     <main>
-        <div></div>
-        <form>
+        <h2>Crée votre terrain du jeu de la vie.</h2>
+
+        <form id="formTbl">
+            Nombre de lignes :
+            <input type="number" name="nombreLignes" id="inputNbrRow" min="10" max="1000" value="10">
+            Nombre de colonnes :
+            <input type="number" name="nombreCelLules" id="inputNbrCel" min="10" max="1000" value="10">
+            <button id="generateTbl">Crée</button>
+        </form>
+
+        <table id="createTbl"></table>
+        <form id="btnList">
             <button id="btnPlay">Play</button>
             <button id="btnPause">Pause</button>
             <button id="btnSpeed">Avance rapide</button>
