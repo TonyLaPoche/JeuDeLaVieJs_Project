@@ -14,7 +14,7 @@ const btnPlay = document.getElementById("btnPlay"); // Activer le Timer //* Ok
 const btnPause = document.getElementById("btnPause"); // Pause du Timer //* OK
 const btnSpeed = document.getElementById("btnSpeed"); // Accélération du Timer //* Ok
 const btnReplay = document.getElementById("btnReplay"); // Replay du Timer //* OK
-const Reset = document.getElementById("reset"); // restart la session //? Pas encore test
+const btnReset = document.getElementById("reset"); // restart la session //? Pas encore test
 
 // ###########################################################//
                     // Play le chrono // 
@@ -31,7 +31,7 @@ function topChrono(e) {
         chrono = setInterval(upTime, 1000); //  Puis on lance le chrono ce lance
         
     } else { // Sinon 
-        console.log(`%cLe Nombre de click est à ${moncul} donc n'est plus correspondant à 1, il ne lancera pas un nouveau compteur de "play"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
+        console.log(`%cLe Nombre de click est à ${moncul} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur de "play"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
 }
 btnPlay.addEventListener("click", topChrono);
@@ -61,7 +61,7 @@ function speedChrono(e) {
         chrono = setInterval(upTime, 500); // le chrono changera sont accélèration.
         
     } else { // Sinon 
-        console.log(`%cLe Nombre de click est à ${monculSpeed} donc n'est plus correspondant à 1, il ne lancera pas un nouveau compteur "d'avance rapide"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
+        console.log(`%cLe Nombre de click est à ${monculSpeed} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "d'avance rapide"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
 }
 
@@ -84,8 +84,22 @@ function replayChrono(e) {
         monculReplay = 0;
         
     } else { // Sinon 
-        console.log(`%cLe Nombre de click est à ${monculReplay} donc n'est plus correspondant à 1, il ne lancera pas un nouveau compteur "replay"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
+        console.log(`%cLe Nombre de click est à ${monculReplay} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "replay"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
 }
 
 btnReplay.addEventListener("click", replayChrono);
+
+//############################################################//
+                    // Reset le chrono // 
+//############################################################//
+function resetChrono(e) {
+    e.preventDefault();
+    clearInterval(chrono)
+    moncul = 0;
+    monculSpeed = 0;
+    monculReplay = 0;
+    timer = 0;
+    timerElement.innerHTML = timer;
+}
+btnReset.addEventListener("click", resetChrono);
