@@ -63,6 +63,8 @@ function speedChrono(e) {
     monculSpeed ++;
     if (monculSpeed === 1 ) { // si monculSpeed est égale à 1 alors on lance le chrono !
         console.log(`c'est nul`)
+        clearInterval(chrono);
+        chrono = setInterval(upTime, 500); // le chrono changera sont accélèration.
     } else { // Sinon 
         console.log(`%cLe Nombre de click est à ${monculSpeed} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "d'avance rapide"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
