@@ -176,15 +176,52 @@ const cellCheck = document.getElementsByClassName("cellule");
 function checkCell() {
     for (let i = 0; i < cellCheck.length; i++) {
         const cell = cellCheck[i];
-        const alive = cell.classList.contains("vivant");
-        if ( alive === true) {
+        const isaLive = cell.classList.contains("vivant");
+        if ( isaLive === true) {
             console.log(`%cCellule VIVANTE en position => ${cell.cellIndex}X - ${cell.parentNode.rowIndex}Y`, 'color: green;');
+            //checkNearDeadCell(cell.cellIndex, cell.parentNode.rowIndex, isaLive);
         } else {
             console.log(`%cCellule MORTE en position => ${cell.cellIndex}X - ${cell.parentNode.rowIndex}Y`, 'color: red;');
-            
+            checkNearAliveCell(cell.cellIndex, cell.parentNode.rowIndex);
         }
-        
     }
 }
 //##############################################//
+// vérifier si les voisine d'une cellule est vivante ou non
+// dans le cas si cette dernière est morte
 
+function checkNearAliveCell(x, y) {
+
+    let g = x - 1;
+    let cellule = document.getElementById('createTbl').rows[g].cells[y];
+    console.log(cellule.className)
+    
+    
+    
+    
+    // if (cellule.classList.contains("vivant") === true) {
+    //     console.log("y'a une cellule VIVAAAANTE a gauche")
+    // } else {
+    //     console.log("y'a une cellule morte a gauche")
+    // }
+    
+    
+    
+    // if (posSupLeft && alive === true ) {
+    //     console.log("cellule coin supérieur gauche vivante")
+    // } else {
+    //     console.log("cellule coin supérieur gauche mort")
+    //     console.log(x, y , alive)
+    // }
+  
+}
+// function checkNearDeadCell(x, y, isAlive) {
+//     let posXSupLeft = (x - 1);
+//     let posYSupLeft = (y - 1);
+//     if (isAlive === true) {
+//         console.log("y'a une cellule vivante supérieur droit")
+//     } else {
+//         console.log("y'a une cellule morte supérieur droit")
+//     }
+//     console.log(posXSupLeft + ' ' + posYSupLeft + ' ' + alive)
+// }
