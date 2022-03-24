@@ -145,7 +145,7 @@ btnCreateTbl.addEventListener("click", makeTbl);
                     // Color Table // 
 //############################################################//
 const cellColor = document.getElementsByClassName("cellule");
-console.log(cellColor);
+//console.log(cellColor);
 
 function toColor(){
    for (let index = 0; index < cellColor.length; index++) {
@@ -177,51 +177,42 @@ function checkCell() {
     for (let i = 0; i < cellCheck.length; i++) {
         const cell = cellCheck[i];
         const isaLive = cell.classList.contains("vivant");
-        if ( isaLive === true) {
-            console.log(`%cCellule VIVANTE en position => ${cell.cellIndex}X - ${cell.parentNode.rowIndex}Y`, 'color: green;');
-            //checkNearDeadCell(cell.cellIndex, cell.parentNode.rowIndex, isaLive);
+        //console.table(isaLive);
+        if ( isaLive ) {
+            console.log(`%cCellule VIVANTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y`, 'color: green;');
+            checkNeighbor(cell);
+            // rule1(isaLive);
+           
         } else {
-            console.log(`%cCellule MORTE en position => ${cell.cellIndex}X - ${cell.parentNode.rowIndex}Y`, 'color: red;');
-            checkNearAliveCell(cell.cellIndex, cell.parentNode.rowIndex);
+            console.log(`%cCellule MORTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y` , 'color: red;');
+            // rule2(isaLive);
+            //checkNeighbor(cell);
         }
     }
 }
 //##############################################//
-// vérifier si les voisine d'une cellule est vivante ou non
-// dans le cas si cette dernière est morte
-
-function checkNearAliveCell(x, y) {
-
-    let g = x - 1;
-    let cellule = document.getElementById('createTbl').rows[g].cells[y];
-    console.log(cellule.className)
+function checkNeighbor(elm) {
+    let posLeft = elm.parentNode.rowIndex - 1 ;
+    if (posLeft.classList.contains("vivant") ) {
+        console.log("voisin de gauche vivant")
+    }
     
-    
-    
-    
-    // if (cellule.classList.contains("vivant") === true) {
-    //     console.log("y'a une cellule VIVAAAANTE a gauche")
-    // } else {
-    //     console.log("y'a une cellule morte a gauche")
-    // }
-    
-    
-    
-    // if (posSupLeft && alive === true ) {
-    //     console.log("cellule coin supérieur gauche vivante")
-    // } else {
-    //     console.log("cellule coin supérieur gauche mort")
-    //     console.log(x, y , alive)
-    // }
-  
 }
-// function checkNearDeadCell(x, y, isAlive) {
-//     let posXSupLeft = (x - 1);
-//     let posYSupLeft = (y - 1);
-//     if (isAlive === true) {
-//         console.log("y'a une cellule vivante supérieur droit")
-//     } else {
-//         console.log("y'a une cellule morte supérieur droit")
-//     }
-//     console.log(posXSupLeft + ' ' + posYSupLeft + ' ' + alive)
-// }
+
+//* Rappelle des règles :
+/* 
+* Cellule vivante : 
+    Si cellules est vivant et qu'elle à pour voisin 2 ou 3 //! Maximum
+    Elle reste en vie SINON meurt.
+* Cellule morte : 
+    Si cellules est morte et qu'elle à pour voisin 3 vivant
+    Elle prend vie SINON reste mort.
+*/
+
+function rule1(bool) {
+    
+}
+
+function rule2(bool) {
+    
+}
