@@ -46,6 +46,10 @@ function stopChrono(e) {
     monculReplay = 0;
 }
 btnPause.addEventListener("click", stopChrono);
+
+const nouvelleFeature =() => {
+    console.log('nouvelle feature')
+}
 //############################################################//
                     // Play x2 le chrono // 
 //############################################################//
@@ -57,9 +61,9 @@ function speedChrono(e) {
     e.preventDefault();
     monculSpeed ++;
     if (monculSpeed === 1 ) { // si monculSpeed est égale à 1 alors on lance le chrono !
+        console.log(`c'est nul`)
         clearInterval(chrono);
         chrono = setInterval(upTime, 500); // le chrono changera sont accélèration.
-        
     } else { // Sinon 
         console.log(`%cLe Nombre de click est à ${monculSpeed} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "d'avance rapide"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
@@ -116,6 +120,7 @@ let inputColonne = document.getElementById("inputNbrCel");
 
 function makeTbl(e) {
     e.preventDefault();
+    tbl.innerHTML="";
     for (let i = 0; i < inputLigne.value; i++){
         let maLigne = document.createElement("tr");
         maLigne.id = `ligne ${i}`;
@@ -125,8 +130,7 @@ function makeTbl(e) {
 
         for (let j = 0; j < inputColonne.value; j++){
             let cellule = document.createElement("td");
-            cellule.className = `Cellule ${i} ${j}`;
-            cellule.style = 'background-color: white;';
+            cellule.className = `cellule pos${i}${j} mort`;
             ligne.appendChild(cellule);
         }
     }
@@ -137,7 +141,7 @@ btnCreateTbl.addEventListener("click", makeTbl);
 //############################################################//
                     // Color Table // 
 //############################################################//
-const cellColor = document.getElementsByClassName("Cellule");
+const cellColor = document.getElementsByClassName("cellule");
 console.log(cellColor);
 
 function check(){
@@ -145,14 +149,21 @@ function check(){
     const cell = cellColor[index];
     
     cell.addEventListener("click", function () {
-        console.log(`cellule colorié`);
-        if (cell.style != 'background-color: black;') {
-            cell.style = 'background-color: black;';
-            console.log(cell);
+        console.log(`cellule colorié`)
+        let etatCell = cell.classList;
+        let bornCell = etatCell.toggle("vivant")
+        let killCell = etatCell.toggle("mort")
+        if (bornCell) {
+            killCell;
         } else {
-            cell.style = 'background-color: white;';
+            bornCell;
         }
     })
 } 
 }
+
+//############################################################//
+                    // Check début règle // 
+//############################################################//
+
 

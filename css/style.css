@@ -60,7 +60,6 @@ td {
     margin: .5rem auto;
     border: 5px solid black;
 }
+.mort { background-color: white; }
 
-.cellule {
-    background-color: white;
-}
+.vivant { background-color: black; }
