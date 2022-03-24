@@ -125,25 +125,34 @@ function makeTbl(e) {
 
         for (let j = 0; j < inputColonne.value; j++){
             let cellule = document.createElement("td");
-            cellule.className = `${i} Cellule ${j}`;
+            cellule.className = `Cellule ${i} ${j}`;
+            cellule.style = 'background-color: white;';
             ligne.appendChild(cellule);
         }
     }
+    check();
 }
 
 btnCreateTbl.addEventListener("click", makeTbl);
 //############################################################//
                     // Color Table // 
 //############################################################//
+const cellColor = document.getElementsByClassName("Cellule");
+console.log(cellColor);
 
-let celluleColor = document.getElementsByClassName("Cellule");
-
-function arYualive(){
-    if (celluleColor.style != 'background-color:black;') {
-        console.log("c'est pas blanc ça !!!")
-    }
+function check(){
+   for (let index = 0; index < cellColor.length; index++) {
+    const cell = cellColor[index];
+    
+    cell.addEventListener("click", function () {
+        console.log(`cellule colorié`);
+        if (cell.style != 'background-color: black;') {
+            cell.style = 'background-color: black;';
+            console.log(cell);
+        } else {
+            cell.style = 'background-color: white;';
+        }
+    })
+} 
 }
-
-
-celluleColor.addEventListener("click", arYualive);
 
