@@ -33,6 +33,8 @@ function topChrono(e) {
     } else { // Sinon 
         console.log(`%cLe Nombre de click est à ${moncul} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur de "play"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
+
+    checkCell();
 }
 btnPlay.addEventListener("click", topChrono);
 // ###########################################################//
@@ -106,6 +108,7 @@ function resetChrono(e) {
     timer = 0;
     timerElement.innerHTML = timer;
     tbl.innerHTML="";
+    console.log("%cVous avez Reset le tableau", 'border: 1px dashed red; font-size:.8rem; padding:.5rem; background-color:yellow;')
 
 }
 btnReset.addEventListener("click", resetChrono);
@@ -134,7 +137,7 @@ function makeTbl(e) {
             ligne.appendChild(cellule);
         }
     }
-    check();
+    toColor();
 }
 
 btnCreateTbl.addEventListener("click", makeTbl);
@@ -144,7 +147,7 @@ btnCreateTbl.addEventListener("click", makeTbl);
 const cellColor = document.getElementsByClassName("cellule");
 console.log(cellColor);
 
-function check(){
+function toColor(){
    for (let index = 0; index < cellColor.length; index++) {
     const cell = cellColor[index];
     
@@ -166,4 +169,21 @@ function check(){
                     // Check début règle // 
 //############################################################//
 
+// Verifier les cellules est vivante ou non 
+// puis appliquer cette vérification au lancement du timer à chaque seconde
+const cellCheck = document.getElementsByClassName("cellule");
 
+function checkCell() {
+    for (let i = 0; i < cellCheck.length; i++) {
+        const cell = cellCheck[i];
+        const alive = cell.classList.contains("vivant");
+        if ( alive === true) {
+            console.log(" est vivant");
+            console.log(`cellule avec var => ${cell} `)
+        } else {
+            console.log(" est mort");
+            console.log(`cellule avec var => ${cell.nodeType} `)
+        }
+        
+    }
+}
