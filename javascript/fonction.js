@@ -178,11 +178,10 @@ function checkCell() {
         const cell = cellCheck[i];
         const alive = cell.classList.contains("vivant");
         if ( alive === true) {
-            console.log(" est vivant");
-            console.log(`cellule avec var => ${cell} `)
+            console.log(`%cCellule VIVANTE en position => ${cell.cellIndex}X - ${cell.parentNode.rowIndex}Y`, 'color: green;');
         } else {
-            console.log(" est mort");
-            console.log(`cellule avec var => ${cell.nodeType} `)
+            console.log(`%cCellule MORTE en position => ${cell.cellIndex}X - ${cell.parentNode.rowIndex}Y`, 'color: red;');
+            
         }
         
     }
