@@ -19,19 +19,20 @@ const btnReset = document.getElementById("reset"); // restart la session //* Ok
 // ###########################################################//
                     // Play le chrono // 
 // ###########################################################//
-let moncul = 0;  // moncul sert de limitateur à l'utilisation du bouton play 
-console.log(moncul +" %cNombre de click au démarrage de la page", 'color:blue;');
+let limitPlay = 0;  // moncul sert de limitateur à l'utilisation du bouton play 
+console.log(limitPlay +" %cNombre de click au démarrage de la page", 'color:blue;');
 
 function topChrono(e) {
+    console.log(cellCheck);
     e.preventDefault();
-    moncul++; // à chaque click on incrémente de 1 moncul
-    console.log(moncul +" %cNombre de click actuel ", 'color:green; font-weight:bold;' ); 
-    if (moncul === 1 ) { // si moncul est égale à 1 alors on lance le chrono !
+    limitPlay++; // à chaque click on incrémente de 1 moncul
+    console.log(limitPlay +" %cNombre de click actuel ", 'color:green; font-weight:bold;' ); 
+    if (limitPlay === 1 ) { // si moncul est égale à 1 alors on lance le chrono !
         clearInterval(chrono); // on s'assure qu'il soit bien à l'arrêt
         chrono = setInterval(upTime, 1000); //  Puis on lance le chrono ce lance
         
     } else { // Sinon 
-        console.log(`%cLe Nombre de click est à ${moncul} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur de "play"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
+        console.log(`%cLe Nombre de click est à ${limitPlay} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur de "play"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
 
     checkCell();
@@ -43,9 +44,9 @@ btnPlay.addEventListener("click", topChrono);
 function stopChrono(e) {
     e.preventDefault();
     clearInterval(chrono)
-    moncul = 0;
-    monculSpeed = 0;
-    monculReplay = 0;
+    limitPlay = 0;
+    limitSpeed = 0;
+    limitReplay = 0;
 }
 btnPause.addEventListener("click", stopChrono);
 
@@ -56,18 +57,18 @@ const nouvelleFeature =() => {
                     // Play x2 le chrono // 
 //############################################################//
 
-let monculSpeed = 0;  // moncul sert de limitateur à l'utilisation du bouton Avance Rapide 
-console.log(monculSpeed +" %cNombre de clickSpeed au démarrage de la page", 'color:blue;');
+let limitSpeed = 0;  // moncul sert de limitateur à l'utilisation du bouton Avance Rapide 
+console.log(limitSpeed +" %cNombre de clickSpeed au démarrage de la page", 'color:blue;');
 
 function speedChrono(e) {
     e.preventDefault();
-    monculSpeed ++;
-    if (monculSpeed === 1 ) { // si monculSpeed est égale à 1 alors on lance le chrono !
+    limitSpeed ++;
+    if (limitSpeed === 1 ) { // si monculSpeed est égale à 1 alors on lance le chrono !
         console.log(`c'est nul`)
         clearInterval(chrono);
         chrono = setInterval(upTime, 500); // le chrono changera sont accélèration.
     } else { // Sinon 
-        console.log(`%cLe Nombre de click est à ${monculSpeed} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "d'avance rapide"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
+        console.log(`%cLe Nombre de click est à ${limitSpeed} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "d'avance rapide"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
 }
 
@@ -77,20 +78,20 @@ btnSpeed.addEventListener("click", speedChrono);
                     // Replay le chrono // 
 //############################################################//
 
-let monculReplay = 0;  // moncul sert de limitateur à l'utilisation du bouton Replay 
-console.log(monculReplay +" %cNombre de clickReplay au démarrage de la page", 'color:blue;');
+let limitReplay = 0;  // moncul sert de limitateur à l'utilisation du bouton Replay 
+console.log(limitReplay +" %cNombre de clickReplay au démarrage de la page", 'color:blue;');
 
 function replayChrono(e) {
     e.preventDefault();
-    monculReplay ++;
-    if (monculReplay === 1 ) { // si monculreplay est égale à 1 alors on restart le chrono !
+    limitReplay ++;
+    if (limitReplay === 1 ) { // si monculreplay est égale à 1 alors on restart le chrono !
         timer = 0;
         clearInterval(chrono);
         chrono = setInterval(upTime, 1000); // le chrono changera sont accélèration en vitesse normale.
-        monculReplay = 0;
+        limitReplay = 0;
         
     } else { // Sinon 
-        console.log(`%cLe Nombre de click est à ${monculReplay} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "replay"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
+        console.log(`%cLe Nombre de click est à ${limitReplay} donc n'est plus correspondant à 1, il ne cumulera pas un nouveau compteur "replay"`, 'color:red; font-weight:bold;background-color:yellow; padding:.5rem; border:.5rem dashed black;'); //! ce console.log n'est EXISTENTIEL ;) hein loïc Maurin (⌐■_■) mais c'est marrant
     }
 }
 
@@ -102,12 +103,12 @@ btnReplay.addEventListener("click", replayChrono);
 function resetChrono(e) {
     e.preventDefault();
     clearInterval(chrono)
-    moncul = 0;
-    monculSpeed = 0;
-    monculReplay = 0;
+    limitPlay = 0;
+    limitSpeed = 0;
+    limitReplay = 0;
     timer = 0;
     timerElement.innerHTML = timer;
-    tbl.innerHTML="";
+    createTbl.innerHTML="";
     console.log("%cVous avez Reset le tableau", 'border: 1px dashed red; font-size:.8rem; padding:.5rem; background-color:yellow;')
 
 }
@@ -116,24 +117,25 @@ btnReset.addEventListener("click", resetChrono);
                     // Generate Table // 
 //############################################################//
 
-const tbl = document.getElementById("createTbl");
-const btnCreateTbl = document.getElementById("generateTbl");
-let inputLigne = document.getElementById("inputNbrRow");
-let inputColonne = document.getElementById("inputNbrCel");
+const createTbl = document.getElementById("createTbl");
+const btnCreateTbl = document.getElementById("btnCreateTbl");
+const inputNbrRow = document.getElementById("inputNbrRow");
+const inputNbCells = document.getElementById("inputNbrCel");
 
 function makeTbl(e) {
     e.preventDefault();
-    tbl.innerHTML="";
-    for (let i = 0; i < inputLigne.value; i++){
+    createTbl.innerHTML="";
+    for (let i = 0; i < inputNbrRow.value; i++){
         let maLigne = document.createElement("tr");
         maLigne.id = `ligne ${i}`;
 
-        tbl.appendChild(maLigne);
+        createTbl.appendChild(maLigne);
         let ligne = document.getElementById(`ligne ${i}`);
 
-        for (let j = 0; j < inputColonne.value; j++){
+        for (let j = 0; j < inputNbCells.value; j++){
             let cellule = document.createElement("td");
-            cellule.className = `cellule pos${i}${j} mort`;
+            cellule.className = `cellule`;
+            cellule.id = `${j}${i}`;
             ligne.appendChild(cellule);
         }
     }
@@ -152,15 +154,8 @@ function toColor(){
     const cell = cellColor[index];
     
     cell.addEventListener("click", function () {
-        console.log(`cellule colorié`)
-        let etatCell = cell.classList;
-        let bornCell = etatCell.toggle("vivant")
-        let killCell = etatCell.toggle("mort")
-        if (bornCell) {
-            killCell;
-        } else {
-            bornCell;
-        }
+        console.log(`Nombre de cellules colorié`);
+        cell.classList.toggle("vivant");        
     })
 } 
 }
@@ -176,11 +171,11 @@ const cellCheck = document.getElementsByClassName("cellule");
 function checkCell() {
     for (let i = 0; i < cellCheck.length; i++) {
         const cell = cellCheck[i];
-        const isaLive = cell.classList.contains("vivant");
+        const isAlive = cell.classList.contains("vivant");
+        checkNeighbors(cell.parentNode.rowIndex , cell.cellIndex,);
         //console.table(isaLive);
-        if ( isaLive ) {
+        if ( isAlive ) {
             console.log(`%cCellule VIVANTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y`, 'color: green;');
-            checkNeighbor(cell);
             // rule1(isaLive);
            
         } else {
@@ -191,15 +186,97 @@ function checkCell() {
     }
 }
 //##############################################//
-function checkNeighbor(elm) {
-    let posLeft = elm.parentNode.rowIndex - 1 ;
-    if (posLeft.classList.contains("vivant") ) {
-        console.log("voisin de gauche vivant")
-    }
+
+/**
+ * check voisins d'une cellules
+ * @param {*} elm 
+ */
+function checkNeighbors(x,y) {
+    /*check celle droite*/
     
+
+    //const cellPos = document.getElementById(`${x}${y}`);
+    //console.log(cellPos);
+    const topLeftNeighbor = document.getElementById(`${x-1}${y-1}`); 
+    const topNeighbor = document.getElementById(`${x}${y-1}`);
+    const topRightNeighbor = document.getElementById(`${x+1}${y-1}`);
+    const rightNeighbor = document.getElementById(`${x+1}${y}`);
+    const bottomRightNeighbor = document.getElementById(`${x+1}${y+1}`);
+    const bottomNeighbor = document.getElementById(`${x+1}${y}`);
+    const bottomLeftNeighbor = document.getElementById(`${x-1}${y+1}`);
+    const leftNeighbor = document.getElementById(`${x}${y-1}`);
+    console.log(topLeftNeighbor);
+    let nbAliveNeighbor = 0;
+    switch (true) {
+        
+        //* SI la cellules en haut à gauche est vivante
+        //? On ajoute 1 à nbAliveNeighbor
+
+        case topLeftNeighbor?.classList.contains("vivant") :
+            nbAliveNeighbor = nbAliveNeighbor + 1;            
+        case topNeighbor?.classList.contains("vivant") :   
+            nbAliveNeighbor = nbAliveNeighbor + 1;
+        case topRightNeighbor?.classList.contains("vivant") :
+            nbAliveNeighbor = nbAliveNeighbor + 1;            
+        case rightNeighbor?.classList.contains("vivant") :   
+            nbAliveNeighbor = nbAliveNeighbor + 1;
+        case bottomRightNeighbor?.classList.contains("vivant") :
+            nbAliveNeighbor = nbAliveNeighbor + 1;            
+        case bottomNeighbor?.classList.contains("vivant") :   
+            nbAliveNeighbor = nbAliveNeighbor + 1;
+        case bottomLeftNeighbor?.classList.contains("vivant") :
+            nbAliveNeighbor = nbAliveNeighbor + 1;            
+        case leftNeighbor?.classList.contains("vivant") :   
+            nbAliveNeighbor = nbAliveNeighbor + 1;
+            break;
+        default:
+            break;
+    }
+    console.log("Nombre de cellule vivante via sitch : " , nbAliveNeighbor);
 }
 
-//* Rappelle des règles :
+// function checkNeighborsIf(x,y){
+//     //const cellPos = document.getElementById(`${x}${y}`);
+//     //console.log(cellPos);
+//     const topLeftNeighbor = document.getElementById(`${x-1}${y-1}`); 
+//     const topNeighbor = document.getElementById(`${x}${y-1}`);
+//     const topRightNeighbor = document.getElementById(`${x+1}${y-1}`);
+//     const rightNeighbor = document.getElementById(`${x+1}${y}`);
+//     const bottomRightNeighbor = document.getElementById(`${x+1}${y+1}`);
+//     const bottomNeighbor = document.getElementById(`${x+1}${y}`);
+//     const bottomLeftNeighbor = document.getElementById(`${x-1}${y+1}`);
+//     const leftNeighbor = document.getElementById(`${x}${y--}`);
+//     console.log(topLeftNeighbor)
+//     let nbAliveNeighbor = 0;
+
+//     if ( topLeftNeighbor?.classList.contains("vivant")) {
+//         nbAliveNeighbor++;
+       
+//     }
+    
+//     console.log("Nombre de cellule vivante via sitch : " , nbAliveNeighbor);
+//     return nbAliveNeighbor;
+    
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! Rappelle des règles :
 /* 
 * Cellule vivante : 
     Si cellules est vivant et qu'elle à pour voisin 2 ou 3 //! Maximum
