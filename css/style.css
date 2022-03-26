@@ -44,21 +44,17 @@ input {
     width: 5rem;
 }
 
-td {
+
+
+#gameboard {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.cellule {
+    box-sizing: border-box;
     border: 1px solid black;
-    width : 1rem;
-    height: 1rem;
-    margin: 0px;
-}
-
-#formTbl {
-    text-align: center;
-    margin:  0 auto;
-}
-
-#createTbl {
-    margin: .5rem auto;
-    border: 5px solid black;
 }
 
 .vivant { background-color: black; }
