@@ -6,22 +6,20 @@ const btnSpeed = document.getElementById("btnSpeed");
 const btnReplay = document.getElementById("btnReplay");
 const btnReset = document.getElementById("reset");
 
-const createTbl = document.getElementById("createTbl");
+const gameboard = document.getElementById("gameboard");
 const btnCreateTbl = document.getElementById("btnCreateTbl");
 const inputNbRow = document.getElementById("inputNbrRow");
 const inputNbColumns = document.getElementById("inputNbrCel");
 const baseDivWidth = 25;
 
-const cells = document.getElementsByClassName("cellule");
+let cells = document.getElementsByClassName("cellule");
 let aliveCells;
 let deadCells;
 
 
 btnPlay.addEventListener("click", function(event) {
     event.preventDefault();
-    checkCell();
     startChrono();
-
 });
 btnPause.addEventListener("click", pauseChrono);
 btnSpeed.addEventListener("click", speedChrono);
@@ -32,6 +30,7 @@ btnCreateTbl.addEventListener("click", function(event) {
     init();
     makeGameboard(baseDivWidth, inputNbRow.value, inputNbColumns.value, allowColoring);
     allowColoring();
+
 });
 
 
@@ -40,17 +39,18 @@ function allowColoring(){
     for (let index = 0; index < cells.length; index++) {
         const cell = cells[index];
         cell.addEventListener("click", function () {
-            cell.classList.toggle("vivant");        
+            cell.classList.toggle("vivant");       
         })
-    } 
+    }
+
 }
 
-function checkCell() {
+function checkCells() {
     for(let cell of cells) {
         if (cell.classList.contains('vivant')){
-            aliveCells += cell;
+            aliveCells.push(cell);
         } else {
-            deadCells += cell;
+            deadCells.push(cell);
         }
     }
 }
@@ -66,131 +66,62 @@ function scanNeighbor(type){
 
     for(let i = 0; i < arrayToUse.length; i++){
 
-        // TODO : formater id sinon ça marche pas
-        const referenceCellIndex = arrayToUse[i].id;
-
-        cells[referenceCellIndex - 1]?.contains('vivant') && aliveCellsCounter++;
-        cells[referenceCellIndex + 1]?.contains('vivant') && aliveCellsCounter++;
-        cells[referenceCellIndex - (inputNbColumns.value + 1)]?.contains('vivant') && aliveCellsCounter++;
-        cells[referenceCellIndex - inputNbColumns.value]?.contains('vivant') && aliveCellsCounter++;
-        cells[referenceCellIndex - (inputNbColumns.value - 1)]?.contains('vivant') && aliveCellsCounter++;
-        cells[referenceCellIndex + (inputNbColumns.value + 1)]?.contains('vivant') && aliveCellsCounter++;
-        cells[referenceCellIndex + inputNbColumns.value]?.contains('vivant') && aliveCellsCounter++;
-        cells[referenceCellIndex + (inputNbColumns.value - 1)]?.contains('vivant') && aliveCellsCounter++;
-
+        const referenceCellIndex = parseInt(arrayToUse[i].id);
+        console.log('INDEX => ',arrayToUse[i].id);
+        cells[referenceCellIndex - 1]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(1) =>', aliveCellsCounter); 
+        cells[referenceCellIndex + 1]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(2) =>', aliveCellsCounter); 
+        cells[referenceCellIndex - (inputNbColumns.value + 1)]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(3) =>', aliveCellsCounter); 
+        cells[referenceCellIndex - inputNbColumns.value]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(4) =>', aliveCellsCounter); 
+        cells[referenceCellIndex - (inputNbColumns.value - 1)]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(5) =>', aliveCellsCounter); 
+        cells[referenceCellIndex + (inputNbColumns.value + 1)]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(6) =>', aliveCellsCounter); 
+        cells[referenceCellIndex + inputNbColumns.value]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(7) =>', aliveCellsCounter); 
+        cells[referenceCellIndex + (inputNbColumns.value - 1)]?.classList.contains('vivant') && aliveCellsCounter++;
+        console.log('(8) =>', aliveCellsCounter); 
 
         defineCellUpdate(type, referenceCellIndex, aliveCellsCounter);
+        aliveCellsCounter = 0;
     }
 }
 
 
-let deadCellsToUpdate = [];
-let aliveCellsToKill = [];
+let deadCellsToUpdate = [];// cellule mort à rendre vivante au prochain cycle
+let aliveCellsToKill = []; // cellule vivante à tuer au prochain cycle
 
 function defineCellUpdate(type, cellIndex, aliveCounter) {
+    console.log('COMPTEUR =>', aliveCounter);
     if(type === 'dead' && aliveCounter === 3 ){
-        deadCellsToUpdate += cells[cellIndex];
-    } else if(type === 'alive' && (aliveCounter === 2 || aliveCounter === 3) ) {
-        aliveCellsToUpdate += cells[cellindex];
+        deadCellsToUpdate.push( cells[cellIndex]);
+    } else if(type === 'alive' && (aliveCounter > 2 || aliveCounter < 3) ) {
+        aliveCellsToKill.push( cells[cellIndex]);
     }
 }
 
+
 function updateCells() {
+    for (const cellDeadBorn of deadCellsToUpdate) {
+        cellDeadBorn.classList.toggle("vivant");
+    }
+    for (const cellAliveKill of aliveCellsToKill) {
+        cellAliveKill.classList.toggle("vivant");
+    }
+
+    deadCellsToUpdate = [];
+    aliveCellsToKill = [];
 }
 
 function init() {
-    deadCellsToUpdate = [];
-    aliveCellsToKill = [];
     aliveCells = [];
     deadCells = [];
     gameboardContainer.innerHTML="";
 }
 
-
-
-
-
-
-
-
-// const cellCheck = document.getElementsByClassName("cellule");
-
-// function checkCell() {
-//     for (let i = 0; i < cellCheck.length; i++) {
-//         const cell = cellCheck[i];
-//         const isAlive = cell.classList.contains("vivant");
-//         checkNeighbors(cell.parentNode.rowIndex , cell.cellIndex,);
-//         if ( isAlive ) {
-//             //console.log(`%cCellule VIVANTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y`, 'color: green;');
-//             // rule1(isaLive);
-           
-//         } else {
-//             //console.log(`%cCellule MORTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y` , 'color: red;');
-//             // rule2(isaLive);
-//             //checkNeighbor(cell);
-//         }
-//     }
-// }
-
-
-function rule1(bool) {
-    
-}
-
-function rule2(bool) {
-    
-}
-
-
-//##############################################//
-
-
-// function checkNeighbors(x,y) {
-//     /*check celle droite*/
-    
-//     console.log('POSITION X', x);
-//     console.log('POSITION Y', y);
-//     const cellPos = document.getElementById(`${x}${y}`);
-//     //console.log(cellPos);
-//     const topLeftNeighbor = document.getElementById(`${x-1}${y-1}`); 
-//     const topNeighbor = document.getElementById(`${x}${y-1}`);
-//     const topRightNeighbor = document.getElementById(`${x+1}${y-1}`);
-//     const rightNeighbor = document.getElementById(`${x+1}${y}`);
-//     const bottomRightNeighbor = document.getElementById(`${x+1}${y+1}`);
-//     const bottomNeighbor = document.getElementById(`${x+1}${y}`);
-//     const bottomLeftNeighbor = document.getElementById(`${x-1}${y+1}`);
-//     const leftNeighbor = document.getElementById(`${x}${y-1}`);
-//     console.log(topLeftNeighbor?.classList);
-    
-    
-//     let nbAliveNeighbor = 0;
-//     switch (true) {
-        
-//         //* SI la cellules en haut à gauche est vivante
-//         //? On ajoute 1 à nbAliveNeighbor
-
-//         case topLeftNeighbor?.classList.contains('vivant'):
-//             nbAliveNeighbor+= 1;            
-//         case topNeighbor?.classList.contains('vivant'):   
-//             nbAliveNeighbor+= 1;
-//         case topRightNeighbor?.classList.contains('vivant'):
-//             nbAliveNeighbor+= 1;            
-//         case rightNeighbor?.classList.contains('vivant'):   
-//             nbAliveNeighbor+= 1;
-//         case bottomRightNeighbor?.classList.contains('vivant'):
-//             nbAliveNeighbor+= 1;            
-//         case bottomNeighbor?.classList.contains('vivant'):   
-//             nbAliveNeighbor+= 1;
-//         case bottomLeftNeighbor?.classList.contains('vivant'):
-//             nbAliveNeighbor+= 1;            
-//         case leftNeighbor?.classList.contains('vivant'):   
-//             nbAliveNeighbor+= 1;
-//             break;
-//         default:
-//             break;
-//     }
-//     console.log("Nombre de cellule voisine vivante (via switch) : " , nbAliveNeighbor);
-// }
 
 
 

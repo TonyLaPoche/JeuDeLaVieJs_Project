@@ -17,7 +17,7 @@
     margin-top: 2rem;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 h1, h2, p {
@@ -34,6 +34,7 @@ p {
 button {
     padding: .5rem 1.5rem;
     font-size: 1.5rem;
+    margin: 0 .5rem;
 }
 
 #GenerateTbl { font-size: 2rem; }
@@ -44,6 +45,10 @@ input {
     width: 5rem;
 }
 
+#inputForm{
+    margin: 0 auto;
+    text-align: center;
+}
 
 
 #gameboard {

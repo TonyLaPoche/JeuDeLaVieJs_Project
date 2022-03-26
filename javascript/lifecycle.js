@@ -1,10 +1,15 @@
 
 let timer = 0; 
 let intervalTime;
+let intervalByCycle = 5000;
 
 function addOneSecondToTimer() {
     timerElement.innerHTML = timer; 
-    timer++; 
+    timer++;
+    checkCells();
+    scanNeighbor('alive');
+    scanNeighbor('dead');
+    updateCells();
 }
 
 function startChrono() {
@@ -13,7 +18,7 @@ function startChrono() {
     if (intervalTime) {
         clearInterval(intervalTime);
     }
-    intervalTime = setInterval(addOneSecondToTimer, 1000)
+    intervalTime = setInterval(addOneSecondToTimer, intervalByCycle);
 }
 
 function pauseChrono(event) {
@@ -46,5 +51,5 @@ function replayChrono(event) {
 function resetChrono(event) {
     event.preventDefault();
     replayChrono(event);
-    createTbl.innerHTML="";
+    gameboard.innerHTML="";
 }

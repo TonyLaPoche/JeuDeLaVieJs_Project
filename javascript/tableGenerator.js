@@ -9,7 +9,7 @@ function makeGameboard(baseDivWidth, rowAmount, columnAmount) {
     for (let i = 0; i < totalCells; i++){
         let cellule = document.createElement("div");
         cellule.classList.add('cellule');
-        cellule.id = `index${i}`;
+        cellule.id = `${i}`;
         cellule.style.width = `${baseDivWidth}px`;
         cellule.style.height = cellule.style.width;
         gameboardContainer.appendChild(cellule);
