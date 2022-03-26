@@ -1,12 +1,15 @@
+
+let timer = 0; 
+let intervalTime;
+
 function addOneSecondToTimer() {
     timerElement.innerHTML = timer; 
     timer++; 
 }
 
-function startChrono(event) {
+function startChrono() {
     btnPlay.setAttribute("disabled", true);
     btnSpeed.removeAttribute("disabled");
-    event.preventDefault();
     if (intervalTime) {
         clearInterval(intervalTime);
     }

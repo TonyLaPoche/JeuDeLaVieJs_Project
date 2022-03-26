@@ -1,7 +1,4 @@
 
-let timer = 0; 
-let intervalTime;
-
 const timerElement = document.getElementById("cycle");
 const btnPlay = document.getElementById("btnPlay");
 const btnPause = document.getElementById("btnPause");
@@ -20,7 +17,8 @@ let aliveCells;
 let deadCells;
 
 
-btnPlay.addEventListener("click", function() {
+btnPlay.addEventListener("click", function(event) {
+    event.preventDefault();
     checkCell();
     startChrono();
 
@@ -115,24 +113,24 @@ function init() {
 
 
 
-const cellCheck = document.getElementsByClassName("cellule");
+// const cellCheck = document.getElementsByClassName("cellule");
 
-function checkCell() {
-    for (let i = 0; i < cellCheck.length; i++) {
-        const cell = cellCheck[i];
-        const isAlive = cell.classList.contains("vivant");
-        checkNeighbors(cell.parentNode.rowIndex , cell.cellIndex,);
-        if ( isAlive ) {
-            //console.log(`%cCellule VIVANTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y`, 'color: green;');
-            // rule1(isaLive);
+// function checkCell() {
+//     for (let i = 0; i < cellCheck.length; i++) {
+//         const cell = cellCheck[i];
+//         const isAlive = cell.classList.contains("vivant");
+//         checkNeighbors(cell.parentNode.rowIndex , cell.cellIndex,);
+//         if ( isAlive ) {
+//             //console.log(`%cCellule VIVANTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y`, 'color: green;');
+//             // rule1(isaLive);
            
-        } else {
-            //console.log(`%cCellule MORTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y` , 'color: red;');
-            // rule2(isaLive);
-            //checkNeighbor(cell);
-        }
-    }
-}
+//         } else {
+//             //console.log(`%cCellule MORTE en position => ${cell.parentNode.rowIndex}X - ${cell.cellIndex}Y` , 'color: red;');
+//             // rule2(isaLive);
+//             //checkNeighbor(cell);
+//         }
+//     }
+// }
 
 
 function rule1(bool) {
@@ -146,56 +144,53 @@ function rule2(bool) {
 
 //##############################################//
 
-/**
- * check voisins d'une cellules
- * @param {*} elm 
- */
-function checkNeighbors(x,y) {
-    /*check celle droite*/
-    
-    console.log('POSITION X', x);
-    console.log('POSITION Y', y);
-    const cellPos = document.getElementById(`${x}${y}`);
-    //console.log(cellPos);
-    const topLeftNeighbor = document.getElementById(`${x-1}${y-1}`); 
-    const topNeighbor = document.getElementById(`${x}${y-1}`);
-    const topRightNeighbor = document.getElementById(`${x+1}${y-1}`);
-    const rightNeighbor = document.getElementById(`${x+1}${y}`);
-    const bottomRightNeighbor = document.getElementById(`${x+1}${y+1}`);
-    const bottomNeighbor = document.getElementById(`${x+1}${y}`);
-    const bottomLeftNeighbor = document.getElementById(`${x-1}${y+1}`);
-    const leftNeighbor = document.getElementById(`${x}${y-1}`);
-    console.log(topLeftNeighbor?.classList);
-    
-    
-    let nbAliveNeighbor = 0;
-    switch (true) {
-        
-        //* SI la cellules en haut à gauche est vivante
-        //? On ajoute 1 à nbAliveNeighbor
 
-        case topLeftNeighbor?.classList.contains('vivant'):
-            nbAliveNeighbor+= 1;            
-        case topNeighbor?.classList.contains('vivant'):   
-            nbAliveNeighbor+= 1;
-        case topRightNeighbor?.classList.contains('vivant'):
-            nbAliveNeighbor+= 1;            
-        case rightNeighbor?.classList.contains('vivant'):   
-            nbAliveNeighbor+= 1;
-        case bottomRightNeighbor?.classList.contains('vivant'):
-            nbAliveNeighbor+= 1;            
-        case bottomNeighbor?.classList.contains('vivant'):   
-            nbAliveNeighbor+= 1;
-        case bottomLeftNeighbor?.classList.contains('vivant'):
-            nbAliveNeighbor+= 1;            
-        case leftNeighbor?.classList.contains('vivant'):   
-            nbAliveNeighbor+= 1;
-            break;
-        default:
-            break;
-    }
-    console.log("Nombre de cellule voisine vivante (via switch) : " , nbAliveNeighbor);
-}
+// function checkNeighbors(x,y) {
+//     /*check celle droite*/
+    
+//     console.log('POSITION X', x);
+//     console.log('POSITION Y', y);
+//     const cellPos = document.getElementById(`${x}${y}`);
+//     //console.log(cellPos);
+//     const topLeftNeighbor = document.getElementById(`${x-1}${y-1}`); 
+//     const topNeighbor = document.getElementById(`${x}${y-1}`);
+//     const topRightNeighbor = document.getElementById(`${x+1}${y-1}`);
+//     const rightNeighbor = document.getElementById(`${x+1}${y}`);
+//     const bottomRightNeighbor = document.getElementById(`${x+1}${y+1}`);
+//     const bottomNeighbor = document.getElementById(`${x+1}${y}`);
+//     const bottomLeftNeighbor = document.getElementById(`${x-1}${y+1}`);
+//     const leftNeighbor = document.getElementById(`${x}${y-1}`);
+//     console.log(topLeftNeighbor?.classList);
+    
+    
+//     let nbAliveNeighbor = 0;
+//     switch (true) {
+        
+//         //* SI la cellules en haut à gauche est vivante
+//         //? On ajoute 1 à nbAliveNeighbor
+
+//         case topLeftNeighbor?.classList.contains('vivant'):
+//             nbAliveNeighbor+= 1;            
+//         case topNeighbor?.classList.contains('vivant'):   
+//             nbAliveNeighbor+= 1;
+//         case topRightNeighbor?.classList.contains('vivant'):
+//             nbAliveNeighbor+= 1;            
+//         case rightNeighbor?.classList.contains('vivant'):   
+//             nbAliveNeighbor+= 1;
+//         case bottomRightNeighbor?.classList.contains('vivant'):
+//             nbAliveNeighbor+= 1;            
+//         case bottomNeighbor?.classList.contains('vivant'):   
+//             nbAliveNeighbor+= 1;
+//         case bottomLeftNeighbor?.classList.contains('vivant'):
+//             nbAliveNeighbor+= 1;            
+//         case leftNeighbor?.classList.contains('vivant'):   
+//             nbAliveNeighbor+= 1;
+//             break;
+//         default:
+//             break;
+//     }
+//     console.log("Nombre de cellule voisine vivante (via switch) : " , nbAliveNeighbor);
+// }
 
 
 
