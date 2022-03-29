@@ -76,7 +76,7 @@ function scanNeighbor(type){
        
         
             cells[referenceCellIndex - columnsNB]?.classList.contains('vivant') && aliveCellsCounter++;
-            console.log('(haut) =>', aliveCellsCounter, 'id voisin tester =>',cells[referenceCellIndex - columnsNB] );
+            console.log('(haut) =>', aliveCellsCounter, 'id voisin tester =>',cells[referenceCellIndex - columnsNB]?.id );
         
         if (cells[referenceCellIndex] % columnsNB != (columnsNB-1)) {
             cells[referenceCellIndex - (columnsNB + 1)]?.classList.contains('vivant') && aliveCellsCounter++;
@@ -103,7 +103,7 @@ function scanNeighbor(type){
         
         
         if (cells[referenceCellIndex] % columnsNB != 0) {
-            cells[referenceCellIndex - (columnsNB - 1)]?.classList.contains('vivant') && aliveCellsCounter++;
+            cells[referenceCellIndex + (columnsNB - 1)]?.classList.contains('vivant') && aliveCellsCounter++;
             console.log('(haut gauche) =>', aliveCellsCounter, 'id voisin tester  => ',cells[referenceCellIndex - (columnsNB - 1)]?.id );
         }
         
@@ -170,7 +170,6 @@ btnCreateTbl.addEventListener("click", function(event) {
     init();
     makeGameboard(baseDivWidth, inputNbRow.value, inputNbColumns.value, allowColoring);
     allowColoring();
-
 });
 
 
