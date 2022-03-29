@@ -1,7 +1,7 @@
 
 let timer = 0; 
 let intervalTime;
-let intervalByCycle = 5000;
+let intervalByCycle = 2500;
 
 function addOneSecondToTimer() {
     timerElement.innerHTML = timer; 
@@ -9,7 +9,7 @@ function addOneSecondToTimer() {
     checkCells();
     scanNeighbor('alive');
     scanNeighbor('dead');
-    updateCells();
+    // updateCells();
 }
 
 function startChrono() {
