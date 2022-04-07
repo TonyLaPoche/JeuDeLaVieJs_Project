@@ -1,11 +1,9 @@
-let array = [
-    [0,1,0],
-    [0,1,0],
-    [0,1,0],
-]
 
-const largeurTableau = array[0].length;
-const hauteurTableau = array.length;
+
+// let areaGame = createGame.SubmitForm;
+// console.log(areaGame)
+const largeurTableau = areaGame[0].length;
+const hauteurTableau = areaGame.length;
 
 function scanArray(){
     // 1 je scanne mon tableau
@@ -32,7 +30,7 @@ function compteVoisin(row, col){
             if( i==0 && j== 0){
                 continue;
             }
-            count += array[row+i][col+j];
+            count += areaGame[row+i][col+j];
         }
     }
     return count;
@@ -42,7 +40,7 @@ function displayTableau(){
     let string = "";
     for( let row = 0; row < hauteurTableau; row++){
         for( let col = 0; col < hauteurTableau; col++ ){
-            if(array[row][col] === 1 ){
+            if(areaGame[row][col] === 1 ){
                 string+="◼️";
             }else{
                 string+="◻️"
@@ -62,7 +60,7 @@ function next(){
         tableauMisAJour.push([]);       
         for( let col = 0; col < hauteurTableau; col++ ){
             const voisins   = compteVoisin(row, col);
-            const isDead    = array[row][col] === 0;
+            const isDead    = areaGame[row][col] === 0;
             //1 La cellule est morte && elle a exactement 3 voisins => elle vit!
             if( isDead && voisins === 3){
                 tableauMisAJour[row].push(1);
@@ -80,15 +78,15 @@ function next(){
 
         }
     }
-    array = tableauMisAJour;  
+    areaGame = tableauMisAJour;  
 }
 
 displayTableau();
-next();
-displayTableau();
+// next();
+// displayTableau();
 
-setInterval( () => {
-    console.clear();
-    next();
-    displayTableau();
-},500);
+// setInterval( () => {
+//     console.clear();
+//     next();
+//     displayTableau();
+// },1000);
