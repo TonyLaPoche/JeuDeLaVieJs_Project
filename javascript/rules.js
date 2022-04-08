@@ -1,9 +1,9 @@
 
 
-// let areaGame = createGame.SubmitForm;
-// console.log(areaGame)
+let areaGame = createGame.areaGame;
 const largeurTableau = areaGame[0].length;
 const hauteurTableau = areaGame.length;
+const play = document.getElementById("btnPlay");
 
 function scanArray(){
     // 1 je scanne mon tableau
@@ -78,15 +78,22 @@ function next(){
 
         }
     }
-    areaGame = tableauMisAJour;  
+    areaGame = tableauMisAJour;
+    createGame.checkStatus(areaGame); 
 }
 
-displayTableau();
+// displayTableau();
 // next();
 // displayTableau();
 
-// setInterval( () => {
-//     console.clear();
-//     next();
-//     displayTableau();
-// },1000);
+
+
+play.addEventListener('click', function (event) {
+    event.preventDefault();
+    setInterval( () => {
+        console.clear();
+        next();
+        displayTableau();
+    },1000);
+
+})
