@@ -9,7 +9,7 @@ const createGame = {
     init: function () {
         createGame.checkStatus(createGame.areaGame); // ça initialisera le checkstatus
         console.log(createGame.areaGame)
-        console.log("init lancé")
+        console.log("init lancée")
         
     },
 
