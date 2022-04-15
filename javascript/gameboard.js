@@ -8,7 +8,7 @@ const createGame = {
 
     init: function () {
         createGame.checkStatus(createGame.areaGame); // ça initialisera le checkstatus
-        console.log(createGame.areaGame)
+        // console.log(createGame.areaGame)
         console.log("init lancée")
         
     },
@@ -28,8 +28,7 @@ const createGame = {
             // on vide l'air de jeu
             // on nettoie l'affichage html du jeu
 
-        displayGame.innerHTML="" 
-        createGame.areaGame = [];  
+        displayGame.innerHTML="";  
 
         // cette première boucle For permet de crée une ligne
         // elle se base sur la value input 
@@ -49,19 +48,19 @@ const createGame = {
             // on relance une boucle for qui créera dans chaque ligne
             // autant de "cellule" qu'il y aura de ligne
             for (let cell = 0; cell < inputNumber; cell++) {
-                let rdm = Math.round(Math.random(0,2))
+                let rdm = Math.round(Math.random(0,2));
+                  
                 creatTab[row].push(rdm);
                 // autant de Block "cellule"
                 let newCell = document.createElement("div");
                 newCell.classList.add('cellule',createGame.etat[rdm]);
                 newRow.append(newCell);
-                createGame.cellToColor.push(newCell.addEventListener('click', createGame.toColor))
-                
+                createGame.cellToColor.push(newCell.addEventListener('click', createGame.toColor));
             }
         }
 
         
-        return createGame.areaGame = creatTab;       
+        createGame.areaGame = creatTab;       
     }, // on fini avec un tableau généré
 
     checkStatus: function (areaGame){
