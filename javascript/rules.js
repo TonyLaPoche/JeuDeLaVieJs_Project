@@ -127,5 +127,5 @@ function displayTableau(){
 playGame.addEventListener('click', play);
 pauseGame.addEventListener('click', function(event){
     event.preventDefault();
-    clearInterval(run);
+    clearInterval(setInterval);
 })
