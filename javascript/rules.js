@@ -1,30 +1,34 @@
-const playGame = document.getElementById("play"); 
-let tableau = [];
+const playGame = document.getElementById("play");
+const pauseGame = document.getElementById("pause");
+const cycle = document.getElementById("time");
+let cycleNbr = 0;
+
+let tableau = createGame.areaGame;
 let start = false;
 
 function play(event) {
     event.preventDefault();
+    tableau = createGame.areaGame;
     start = true;
     run(start);
-    tableau = createGame.areaGame;
     return tableau, console.log(tableau)
 }
 
 function run(start) {
     if (start = true) 
         {
-            
-            
-            // console.log(tableau)
-            // console.log(hauteurTableau)
-            // console.log(largeurTableau)
             setInterval( () => {
             console.clear();
             scanArray();
             next();
             displayTableau();
+            cycleNbr++;
+            cycle.innerHTML=cycleNbr;
             },500);
         } 
+        else {
+            clearInterval();
+        }
         
 }
 
@@ -115,24 +119,13 @@ function displayTableau(){
             }
         }
     }
-    // let ligneTest = document.getElementsByClassName(`ligne`)
-    // console.log(ligneTest)
-    // let cellToChange = ligneTest[0].childNodes[1];
-    // console.log(cellToChange)
+   
 }
-// displayTableau();
-// next();
-// displayTableau();
+
 
 
 playGame.addEventListener('click', play);
-
-// play.addEventListener('click', function (event) {
-//     event.preventDefault();
-//     setInterval( () => {
-//         console.clear();
-//         next();
-//         displayTableau();
-//     },1000);
-
-// })
+pauseGame.addEventListener('click', function(event){
+    event.preventDefault();
+    clearInterval(run);
+})

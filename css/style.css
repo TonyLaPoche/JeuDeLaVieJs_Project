@@ -104,8 +104,13 @@ main {
     justify-content: center;
 }
 .pannel > span {
+    margin: 1rem;
+}
+
+#cmdGame {
     margin-top: 1rem;
 }
+
 #formGame {
     margin: 1.5rem;
     display: flex;
@@ -132,5 +137,17 @@ main {
 
 .create:hover {
     color: rgba(229, 200, 11, 0.924);
-    text-shadow: 4px 4px 2px rgba(0,0,0,0.89);
+    text-shadow: 4px 3px 2px rgba(0,0,0,0.90);
+}
+
+.cadre_main {
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.5);
+    padding: .5rem;
+    margin: .5rem auto;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
 }

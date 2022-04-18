@@ -30,18 +30,30 @@ main {
 }
 
 .cellule{
-    height: 1.5rem;
-    width: 1.5rem;
-    border: 1px solid darkred;
-    margin: 0;
-    
-    
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 1px solid lightslategray;
+    margin: 0; 
 }
 
 .vivant {
-    background-color: blueviolet;
+    background-color: black;
 }
 
 .mort {
-    background-color: cornflowerblue;
+    background-color: white;
+}
+
+#diplay_game {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+#gameboard {
+    background-color: lightseagreen;
+    display: block;
+    margin-top:5rem;
+    width: 100%;
 }

@@ -28,33 +28,26 @@
                 <nav class="menu">
                     <div class="presentation cadre_nav">
                         <h2>
-                            présentation
+                            Concept
                         </h2>
                         <ul>
                             <li>
-                                le jeu de la vie, est un concept mathématique inventé dans les années 70 par robert
-                                frodiguër.
-                                Il a pour but d'étudier le phénomène d'emergence, c'est à dire comment de simple forme
-                                abstraite
-                                peuvent partir totalement en chaos
+                                Le Jeu de la vie est un « jeu à zéro joueur », puisqu'il ne nécessite aucune intervention du joueur lors de son déroulement. 
+                                Il s’agit d’un automate cellulaire, un modèle où chaque état conduit mécaniquement à l’état suivant à partir de règles pré-établies.
                             </li>
                         </ul>
                     </div>
                     <div class="regle cadre_nav">
                         <h2>
-                            Les règles
+                            Règles
                         </h2>
                         <ul>
                             <li>
-                                Si une cellule initialement vivante à pour voisin 2 ou 3 voisin vivant au
-                                prochain
-                                cyle elle vit sinon elle meurt
+                                Une cellule <strong>morte</strong> possédant exactement trois cellules voisines <strong>vivantes</strong> devient <strong>vivante</strong> (elle naît)
                             </li>
                             <hr>
                             <li>
-                                Si une cellule mort a exactement 3 voisin vivant, elle vit sinon elle reste mort
-                                au
-                                prochain cycle
+                                Une cellule <strong>vivante</strong> possédant deux ou trois cellules voisines <strong>vivantes</strong> le reste, sinon elle meurt.
                             </li>
                         </ul>
                     </div>
@@ -64,8 +57,8 @@
                         </span>
                         <form id="formGame">
                             <input id="input" type="number" min="3" max="9999" value="10" required>
-                            <button id="btnEmpty" class="create">crée un tableau vide</button>
-                            <button id="btnRandom" class="create">crée un tableau alléatoire</button>
+                            <button id="btnEmpty" class="create">créer un tableau vide</button>
+                            <button id="btnRandom" class="create">créer un tableau alléatoire</button>
                         </form>
                     </div>
                     <div class="cadre_nav pannel">
@@ -81,27 +74,23 @@
         <main>
             <section>
                 <hr>
-                <span id="info">Si le moindre bug, n'hésiter à refresh la page</span>
+                <span id="info">Si le moindre bug, n'hésitez pas à refresh la page</span>
                 <hr>
-                <div class="areaGame">
+                <div id="diplay_game">
+                    <div class="cadre_main">Cycle: 
+                        <span id="time"></span> 
+                    </div>
                     <div id="gameboard">
                         <span>
                             Veuillez générer un tableau..
                         </span>
                     </div>
                 </div>
-                
-                <div>
-
-                </div>
             </section>
         </main>
     </div>
-
-
-
-
-
+    <script src="./javascript/gameboard.js"></script>
+    <script src="./javascript/rules.js"></script>
 </body>
 
 </html>

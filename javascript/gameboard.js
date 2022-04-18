@@ -1,6 +1,7 @@
 const createGame = {
     areaGame: [],// on commence avec un tableau vide
-    inputForm: document.getElementById('formGame'), // propiété du formulaire
+    btnRandom: document.getElementById('btnRandom'), 
+    btnEmpty: document.getElementById('btnEmpty'),
     input: document.getElementById('input'), // valeur de la génération de $areagame = []
     plateau: document.getElementById('gameboard'),  // affichage du gameboard sur l'index.html
     cellToColor : [],
@@ -13,46 +14,48 @@ const createGame = {
         
     },
 
-
-    SubmitForm: function (event){
+    SubmitFormEmpty: function (event){
         event.preventDefault();
-        // console.clear();
-        //* affichage du jeu
         const displayGame = createGame.plateau; 
-        //* on copie aeragame[] dans creaTab[]
         let creatTab = createGame.areaGame;
-        //* gestion de l'int qui génère la taille du displayGame
         let inputNumber = createGame.input.value;
 
-            // à chaque lancement d'un tableau
-            // on vide l'air de jeu
-            // on nettoie l'affichage html du jeu
-
-        displayGame.innerHTML="";  
-
-        // cette première boucle For permet de crée une ligne
-        // elle se base sur la value input 
+        displayGame.innerHTML="";
 
         for (let row = 0; row < inputNumber; row++) {
             creatTab.push([]);
-            // rajoute un index au tableau (il accueuillera les cellules)
             let newRow = document.createElement("div");
-            // initialise la création de <div>
             newRow.classList.add('ligne', row)
-            // précise qu'à chaque création on lui rajoute la classe "ligne (son numéro)"
             displayGame.append(newRow);
-            // on crée les div avec classe
-            
-            
-            // après CHAQUE création de div et d'init de tableau
-            // on relance une boucle for qui créera dans chaque ligne
-            // autant de "cellule" qu'il y aura de ligne
+            for (let cell = 0; cell < inputNumber; cell++) {
+                creatTab[row].push(0);
+                let newCell = document.createElement("div");
+                newCell.classList.add('cellule',createGame.etat[0]);
+                newRow.append(newCell);
+                createGame.cellToColor.push(newCell.addEventListener('click', createGame.toColor));
+            }
+        }
+
+        
+        createGame.areaGame = creatTab;       
+    },
+
+    SubmitFormRandom: function (event){
+        event.preventDefault();
+        const displayGame = createGame.plateau; 
+        let creatTab = createGame.areaGame;
+        let inputNumber = createGame.input.value;
+
+        displayGame.innerHTML="";
+
+        for (let row = 0; row < inputNumber; row++) {
+            creatTab.push([]);
+            let newRow = document.createElement("div");
+            newRow.classList.add('ligne', row)
+            displayGame.append(newRow);
             for (let cell = 0; cell < inputNumber; cell++) {
                 let rdm = Math.round(Math.random(0,2));
-                // Math.round(Math.random(0,2));
-                  
                 creatTab[row].push(rdm);
-                // autant de Block "cellule"
                 let newCell = document.createElement("div");
                 newCell.classList.add('cellule',createGame.etat[rdm]);
                 newRow.append(newCell);
@@ -62,7 +65,7 @@ const createGame = {
 
         
         createGame.areaGame = creatTab;       
-    }, // on fini avec un tableau généré
+    },
 
     checkStatus: function (areaGame){
         //console.log(divLigne[0].childNodes[0])//!
@@ -99,7 +102,8 @@ const createGame = {
 }
 
 
-createGame.inputForm.addEventListener('submit', createGame.SubmitForm);
+createGame.btnEmpty.addEventListener('click', createGame.SubmitFormEmpty);
+createGame.btnRandom.addEventListener('click', createGame.SubmitFormRandom);
 
 
 //*console.table(createGame.areaGame);
