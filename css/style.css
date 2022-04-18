@@ -1,47 +1,136 @@
-#container {
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
     margin: 0 auto;
+    font-family: 'Press Start 2P', cursive;
 }
-
-header {
+.header {
+    width: 100%;
+    margin: 1% 10%;
+}
+.header > div > h1 {
     text-align: center;
 }
 
-main {
-    text-align: center;
-}
-
-#formGame {
+.cadre {
     box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 4rem;
+    width: 40%;
+    padding: 0;
+    margin: .2rem auto;
+
+    box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+
+}
+.cadre > h1 {
+    text-shadow: 4px 4px 6px rgba(0,0,0,0.39);
+    margin: .5rem auto;
+}
+aside {
+    width: calc(1/4*100%);
+}
+main {
+    width: calc(3/4*100%);
+}
+
+
+.menu h2 {
+    text-align: center;
+    margin-top: 2rem;
+    text-shadow: 4px 4px 6px rgba(0,0,0,0.39);
+    font-size: 1.5rem;
+}
+.menu .presentation ul {
+	max-height: 0;	
+	overflow: hidden;
+	transition: 5s;
+}
+.menu .presentation:hover ul {
+    display: block;
+    font-size: 1rem;    
+    max-height: 100em;
+	transition: 3s;
+}
+
+.menu .regle ul {
+    max-height: 0;	
+	overflow: hidden;
+	transition: 5s;
+}
+.menu .regle:hover ul {
+    display: block;
+    font-size: 1rem;    
+    max-height: 100em;
+	transition: 3s;
+}
+.menu .regle:hover > h2 {
+    color: rgba(229, 200, 11, 0.924);
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.89);
+}
+.menu .presentation:hover > h2 {
+    color: rgba(229, 200, 11, 0.924);
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.89);
+}
+
+.cadre_nav {
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 4rem;
+    padding: .5rem;
+    margin: .5rem auto;
+    text-align: center;
+    
+
+    box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.4);
+}
+
+#info{
+    display: block;
+    font-style: italic;
+    color: darkred;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.pannel {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
-#gameboard {
-    margin: 1.5rem 0;
+.pannel > span {
+    margin-top: 1rem;
 }
-
-.ligne {
-    display:flex;
-    justify-content: center;
+#formGame {
+    margin: 1.5rem;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     width: 100%;
-    margin: 0 auto;
+}
+#formGame > input {
+    height: 2rem;
+    width: 100%;
+    margin-bottom: .5rem;
+    text-align: center;
+    border-radius: 2rem;
+    font-family: 'Press Start 2P', cursive;
+}
+.create {
+    box-sizing: border-box;
+    margin-bottom: .5rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    font-family: 'Press Start 2P', cursive;
 }
 
-.cellule{
-    height: 1.5rem;
-    width: 1.5rem;
-    border: 1px solid darkred;
-    margin: 0;
-    
-    
-}
-
-.vivant {
-    background-color: blueviolet;
-}
-
-.mort {
-    background-color: cornflowerblue;
+.create:hover {
+    color: rgba(229, 200, 11, 0.924);
+    text-shadow: 4px 4px 2px rgba(0,0,0,0.89);
 }

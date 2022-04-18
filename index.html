@@ -1,29 +1,107 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/gameStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Jeu de la vie</title>
 </head>
+
+
 <body>
-    <div id="container">
-        <header>
-            <h1>Jeu de la vie</h1>
-        </header>
+    <div class="container">
+        <div class="header">
+            <div class="cadre">
+                <h1>
+                    Jeu de la vie
+                </h1>
+            </div>
+        </div>
+        <aside>
+            <section>
+                <nav class="menu">
+                    <div class="presentation cadre_nav">
+                        <h2>
+                            présentation
+                        </h2>
+                        <ul>
+                            <li>
+                                le jeu de la vie, est un concept mathématique inventé dans les années 70 par robert
+                                frodiguër.
+                                Il a pour but d'étudier le phénomène d'emergence, c'est à dire comment de simple forme
+                                abstraite
+                                peuvent partir totalement en chaos
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="regle cadre_nav">
+                        <h2>
+                            Les règles
+                        </h2>
+                        <ul>
+                            <li>
+                                Si une cellule initialement vivante à pour voisin 2 ou 3 voisin vivant au
+                                prochain
+                                cyle elle vit sinon elle meurt
+                            </li>
+                            <hr>
+                            <li>
+                                Si une cellule mort a exactement 3 voisin vivant, elle vit sinon elle reste mort
+                                au
+                                prochain cycle
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cadre_nav pannel">
+                        <span>
+                            Choisisser le nombre de cellules à générer
+                        </span>
+                        <form id="formGame">
+                            <input id="input" type="number" min="3" max="9999" value="10" required>
+                            <button id="btnEmpty" class="create">crée un tableau vide</button>
+                            <button id="btnRandom" class="create">crée un tableau alléatoire</button>
+                        </form>
+                    </div>
+                    <div class="cadre_nav pannel">
+                        <form id="cmdGame">
+                            <button id="play" class="create">play</button>
+                            <button id="pause" class="create">pause</button>
+                            <button id="refresh" class="create">refresh</button>
+                        </form>
+                    </div>
+                </nav>
+            </section>
+        </aside>
         <main>
-            <form id="formGame">
-                <input id="input" type="number" value="3" required>
-                <button id="btnCreate">Crée</button>
-            </form>
-            <form >
-                <button id="play">Play</button>
-            </form>
-            <div id="gameboard"></div>
+            <section>
+                <hr>
+                <span id="info">Si le moindre bug, n'hésiter à refresh la page</span>
+                <hr>
+                <div class="areaGame">
+                    <div id="gameboard">
+                        <span>
+                            Veuillez générer un tableau..
+                        </span>
+                    </div>
+                </div>
+                
+                <div>
+
+                </div>
+            </section>
         </main>
     </div>
-    <script src="./javascript/gameboard.js"></script>
-    <script src="./javascript/rules.js"></script>
+
+
+
+
+
 </body>
+
 </html>

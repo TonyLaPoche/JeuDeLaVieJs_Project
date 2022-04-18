@@ -1,0 +1,47 @@
+#container {
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    text-align: center;
+}
+
+#formGame {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#gameboard {
+    margin: 1.5rem 0;
+}
+
+.ligne {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.cellule{
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid darkred;
+    margin: 0;
+    
+    
+}
+
+.vivant {
+    background-color: blueviolet;
+}
+
+.mort {
+    background-color: cornflowerblue;
+}

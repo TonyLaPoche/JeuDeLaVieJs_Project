@@ -49,6 +49,7 @@ const createGame = {
             // autant de "cellule" qu'il y aura de ligne
             for (let cell = 0; cell < inputNumber; cell++) {
                 let rdm = Math.round(Math.random(0,2));
+                // Math.round(Math.random(0,2));
                   
                 creatTab[row].push(rdm);
                 // autant de Block "cellule"
